@@ -1,0 +1,554 @@
+<title>Design Toolkit Register</title>
+<meta name="description" content="One-page register of the design, architecture and project-management skills and connectors available to the team.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#EEF1EE; --sheet:#F9FAF8; --ink:#17201F; --ink-2:#4A5654; --ink-3:#7B8784;
+  --line:#C9D1CE; --line-2:#DDE3E0;
+  --accent:#1E5AA0; --accent-soft:#DCE7F4; --accent-ink:#FFFFFF;
+  --red:#B8372B; --red-soft:#F6E1DE; --green:#2F7650; --green-soft:#DDEEE3;
+  --amber:#8A6414; --amber-soft:#F4EAD2;
+  --k-repo:#1E5AA0; --k-skill:#6B4AA0; --k-conn:#2F7650;
+  --shadow:0 1px 0 rgba(23,32,31,.04),0 8px 24px -12px rgba(23,32,31,.18);
+  --f-disp:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#0E1719; --sheet:#142023; --ink:#E3EAE8; --ink-2:#AAB7B4; --ink-3:#7D8B88;
+    --line:#2A3A3D; --line-2:#1F2D30;
+    --accent:#7FB0E8; --accent-soft:#1C3048; --accent-ink:#0E1719;
+    --red:#EE8A7E; --red-soft:#3A2020; --green:#7CC79C; --green-soft:#183026;
+    --amber:#E3BE6A; --amber-soft:#342A14;
+    --k-repo:#7FB0E8; --k-skill:#B9A0E8; --k-conn:#7CC79C;
+    --shadow:0 1px 0 rgba(0,0,0,.3),0 10px 28px -14px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#0E1719; --sheet:#142023; --ink:#E3EAE8; --ink-2:#AAB7B4; --ink-3:#7D8B88;
+  --line:#2A3A3D; --line-2:#1F2D30;
+  --accent:#7FB0E8; --accent-soft:#1C3048; --accent-ink:#0E1719;
+  --red:#EE8A7E; --red-soft:#3A2020; --green:#7CC79C; --green-soft:#183026;
+  --amber:#E3BE6A; --amber-soft:#342A14;
+  --k-repo:#7FB0E8; --k-skill:#B9A0E8; --k-conn:#7CC79C;
+  --shadow:0 1px 0 rgba(0,0,0,.3),0 10px 28px -14px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.5 var(--f-body);
+  background-image:linear-gradient(var(--line-2) 1px,transparent 1px),linear-gradient(90deg,var(--line-2) 1px,transparent 1px);
+  background-size:24px 24px;background-position:-1px -1px}
+.wrap{max-width:1320px;margin:0 auto;padding-inline:20px;padding-block:20px 48px}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mono{font-family:var(--f-mono)}
+
+/* Title block */
+.tb{background:var(--sheet);border:1.5px solid var(--ink);display:grid;grid-template-columns:1fr auto;box-shadow:var(--shadow)}
+.tb-main{padding:18px 22px 16px;border-right:1.5px solid var(--ink)}
+.eyebrow{font:500 11px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+h1{font:700 clamp(30px,5vw,48px)/1 var(--f-disp);letter-spacing:.01em;margin:8px 0 10px;text-transform:uppercase;text-wrap:balance}
+.lede{margin:0;color:var(--ink-2);max-width:68ch}
+.tb-cells{display:grid;grid-template-columns:repeat(2,minmax(110px,auto))}
+.cell{padding:10px 14px;border-bottom:1px solid var(--line);border-left:1px solid var(--line)}
+.cell:nth-child(odd){border-left:0}
+.cell:nth-last-child(-n+2){border-bottom:0}
+.cell .k{font:500 10px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.cell .v{font:600 18px/1.2 var(--f-disp);margin-top:5px;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.cell .v.big{font-size:26px}
+
+/* Legend / counts */
+.strip{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;margin:14px 2px 0;color:var(--ink-2);font-size:13px}
+.dot{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:0}
+.strip b{font-variant-numeric:tabular-nums;color:var(--ink)}
+
+/* Section heads */
+.sec{margin-top:26px}
+.sec-h{display:flex;align-items:baseline;gap:12px;border-bottom:1.5px solid var(--ink);padding-bottom:6px;margin-bottom:12px}
+.sec-h h2{font:700 22px/1 var(--f-disp);text-transform:uppercase;letter-spacing:.03em;margin:0}
+.sec-h .eyebrow{margin-left:auto}
+
+/* Workflow */
+.flows{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.flow{background:var(--sheet);border:1px solid var(--line);padding:12px 14px}
+.flow h3{font:600 15px/1.2 var(--f-disp);text-transform:uppercase;letter-spacing:.04em;margin:0 0 4px}
+.flow p{margin:0 0 10px;color:var(--ink-3);font-size:12.5px}
+.chain{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.node{border:1px solid var(--line);background:var(--paper);padding:4px 8px;font:500 12px/1.3 var(--f-mono);cursor:pointer;border-radius:2px}
+.node:hover{border-color:var(--accent);color:var(--accent)}
+.node[data-kind="repo"]{border-left:3px solid var(--k-repo)}
+.node[data-kind="skill"]{border-left:3px solid var(--k-skill)}
+.node[data-kind="connector"]{border-left:3px solid var(--k-conn)}
+.arr{color:var(--ink-3);font:12px var(--f-mono)}
+.or{color:var(--ink-3);font:11px var(--f-mono);text-transform:uppercase;letter-spacing:.08em}
+
+/* Controls */
+.controls{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(6px);
+  padding-block:10px;margin-inline:-4px;padding-inline:4px;display:grid;gap:8px;border-bottom:1px solid var(--line)}
+.row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.search{flex:1 1 260px;display:flex;align-items:center;gap:8px;background:var(--sheet);border:1.5px solid var(--ink);padding:0 10px}
+.search input{border:0;background:transparent;outline:none;padding:9px 0;width:100%}
+.search span{font:12px var(--f-mono);color:var(--ink-3)}
+.lbl{font:500 10.5px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-right:4px;min-width:52px}
+.chip{border:1px solid var(--line);background:var(--sheet);padding:5px 10px;border-radius:999px;cursor:pointer;font-size:12.5px;line-height:1.2}
+.chip:hover{border-color:var(--ink-3)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip .n{font:11px var(--f-mono);opacity:.65;margin-left:4px}
+
+/* Layout: list + detail */
+.main{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:18px;align-items:start;margin-top:14px}
+.group{margin-bottom:22px}
+.group-h{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}
+.gcode{font:600 12px/1 var(--f-mono);background:var(--ink);color:var(--paper);padding:4px 6px}
+.group-h h3{margin:0;font:600 17px/1 var(--f-disp);text-transform:uppercase;letter-spacing:.04em}
+.group-h .gsub{color:var(--ink-3);font-size:12.5px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.card{position:relative;text-align:left;background:var(--sheet);border:1px solid var(--line);padding:11px 12px 10px;cursor:pointer;display:flex;flex-direction:column;gap:6px;min-height:128px}
+.card:hover{border-color:var(--ink-3)}
+.card[aria-current="true"]{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.card::before{content:"";position:absolute;left:-1px;top:-1px;bottom:-1px;width:3px}
+.card[data-kind="repo"]::before{background:var(--k-repo)}
+.card[data-kind="skill"]::before{background:var(--k-skill)}
+.card[data-kind="connector"]::before{background:var(--k-conn)}
+.card-top{display:flex;gap:8px;align-items:baseline;justify-content:space-between}
+.code{font:500 11px/1 var(--f-mono);color:var(--ink-3);letter-spacing:.04em}
+.kind{font:500 10px/1 var(--f-mono);text-transform:uppercase;letter-spacing:.1em}
+.kind[data-k="repo"]{color:var(--k-repo)} .kind[data-k="skill"]{color:var(--k-skill)} .kind[data-k="connector"]{color:var(--k-conn)}
+.card h4{margin:0;font:600 15.5px/1.2 var(--f-body)}
+.card p{margin:0;color:var(--ink-2);font-size:12.5px;line-height:1.45}
+.stages{display:flex;gap:3px;margin-top:auto;padding-top:4px}
+.st{flex:1;height:4px;background:var(--line-2)}
+.st.on{background:var(--ink-2)}
+.flag{font:500 10px/1 var(--f-mono);text-transform:uppercase;letter-spacing:.08em;padding:3px 5px;border-radius:2px}
+.flag.auth{background:var(--amber-soft);color:var(--amber)}
+.flag.req{background:var(--red-soft);color:var(--red)}
+.empty{padding:28px;border:1px dashed var(--line);text-align:center;color:var(--ink-3);background:var(--sheet)}
+
+/* Detail panel */
+.detail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 118px);background:var(--sheet);border:1.5px solid var(--ink);box-shadow:var(--shadow);max-height:calc(100vh - 140px);overflow:auto}
+.d-head{padding:14px 16px 12px;border-bottom:1px solid var(--line)}
+.d-head h2{margin:6px 0 4px;font:700 26px/1.05 var(--f-disp);text-transform:uppercase;letter-spacing:.02em}
+.d-head p{margin:0;color:var(--ink-2)}
+.d-sec{padding:12px 16px;border-bottom:1px solid var(--line-2)}
+.d-sec:last-child{border-bottom:0}
+.d-sec h5{margin:0 0 6px;font:500 10.5px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.d-sec ul{margin:0;padding-left:18px}
+.d-sec li{margin:2px 0}
+.kv{display:grid;grid-template-columns:92px 1fr;gap:4px 10px;font-size:13px}
+.kv dt{color:var(--ink-3)} .kv dd{margin:0}
+.cmd{display:flex;align-items:stretch;border:1px solid var(--line);background:var(--paper)}
+.cmd code{flex:1;padding:8px 10px;font:12.5px/1.45 var(--f-mono);white-space:pre-wrap;word-break:break-word}
+.cmd button{border:0;border-left:1px solid var(--line);background:transparent;padding:0 12px;cursor:pointer;font:500 11px var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--accent)}
+.cmd button:hover{background:var(--accent-soft)}
+.stagebar{display:grid;grid-template-columns:repeat(6,1fr);gap:3px}
+.stagebar span{font:500 10px/1.2 var(--f-mono);text-transform:uppercase;letter-spacing:.04em;padding:6px 4px;text-align:center;background:var(--paper);color:var(--ink-3);border:1px solid var(--line-2)}
+.stagebar span.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.links{display:flex;flex-wrap:wrap;gap:6px}
+.close{display:none;border:1px solid var(--line);background:var(--paper);cursor:pointer;padding:4px 10px;font:500 11px var(--f-mono);text-transform:uppercase;letter-spacing:.08em;float:right}
+.note{font-size:12px;color:var(--ink-3);margin-top:28px;border-top:1px solid var(--line);padding-top:10px;max-width:90ch}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:8px 14px;font:12px var(--f-mono);z-index:30}
+
+@media (max-width:980px){
+  .main{grid-template-columns:1fr}
+  .detail{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:78vh;z-index:20;border-width:1.5px 0 0;padding-bottom:env(safe-area-inset-bottom,0px)}
+  .close{display:inline-block}
+}
+@media (max-width:640px){
+  .wrap{padding-inline:16px}
+  .tb{grid-template-columns:1fr}
+  .tb-main{border-right:0;border-bottom:1.5px solid var(--ink)}
+  .lbl{min-width:0;width:100%}
+}
+@media (prefers-reduced-motion:no-preference){
+  .card,.chip,.node{transition:border-color .12s,background-color .12s,color .12s}
+}
+</style>
+
+<div class="wrap">
+  <header class="tb">
+    <div class="tb-main">
+      <div class="eyebrow">Architecture · Design Management · Hong Kong</div>
+      <h1>Design Toolkit Register</h1>
+      <p class="lede">Every skill and connector the team can call from Claude, filed by what it is for and when in the project it helps. Pick a card to see what it does, what it needs, what it produces and the exact words to start it.</p>
+    </div>
+    <div class="tb-cells" aria-label="Register summary">
+      <div class="cell"><div class="k">Sheet</div><div class="v mono">G-000</div></div>
+      <div class="cell"><div class="k">Rev</div><div class="v mono">P01</div></div>
+      <div class="cell"><div class="k">Items</div><div class="v big" id="c-all">0</div></div>
+      <div class="cell"><div class="k">Issued</div><div class="v mono">2026-09-24</div></div>
+      <div class="cell"><div class="k">Skills</div><div class="v big" id="c-skills">0</div></div>
+      <div class="cell"><div class="k">Connectors</div><div class="v big" id="c-conn">0</div></div>
+    </div>
+  </header>
+
+  <div class="strip" aria-label="Legend">
+    <span><i class="dot" style="background:var(--k-repo)"></i><b id="c-repo">0</b> repo skills <span class="mono" style="color:var(--ink-3)">(this repository, /slash)</span></span>
+    <span><i class="dot" style="background:var(--k-skill)"></i><b id="c-cs">0</b> Claude skills <span class="mono" style="color:var(--ink-3)">(account library)</span></span>
+    <span><i class="dot" style="background:var(--k-conn)"></i><b id="c-cn">0</b> connectors <span class="mono" style="color:var(--ink-3)">(live apps)</span></span>
+    <span style="display:flex;align-items:center;gap:6px"><span class="stages" style="width:60px;padding:0"><i class="st on"></i><i class="st on"></i><i class="st"></i><i class="st"></i><i class="st"></i><i class="st"></i></span> stage bar: Brief → Handover</span>
+  </div>
+
+  <section class="sec" aria-labelledby="wf-h">
+    <div class="sec-h"><h2 id="wf-h">Typical chains</h2><span class="eyebrow">Tap a step for detail</span></div>
+    <div class="flows" id="flows"></div>
+  </section>
+
+  <section class="sec" aria-labelledby="reg-h">
+    <div class="sec-h"><h2 id="reg-h">Register</h2><span class="eyebrow" id="shown">—</span></div>
+    <div class="controls">
+      <div class="row">
+        <label class="search" for="q"><span>⌕</span><input id="q" type="search" placeholder="Search: RFI, door schedule, SketchUp, egress, submittal…" autocomplete="off"><span>/</span></label>
+      </div>
+      <div class="row" role="group" aria-label="Filter by type"><span class="lbl">Type</span><span id="f-kind" class="row"></span></div>
+      <div class="row" role="group" aria-label="Filter by project stage"><span class="lbl">Stage</span><span id="f-stage" class="row"></span></div>
+    </div>
+
+    <div class="main">
+      <div id="list"></div>
+      <aside class="detail" id="detail" aria-live="polite"></aside>
+    </div>
+  </section>
+
+  <p class="note">Connector list reflects the apps connected to this Claude account on the issue date; colleagues see only the connectors they have connected themselves. Items marked <span class="flag auth">Needs sign-in</span> are installed but must be authorised in claude.ai → Settings → Connectors before use. Repo skills require this repository installed (<span class="mono">./setup</span>) and are run from Claude Code. Skills never invent dimensions, specification clauses or code citations; always check outputs before issue.</p>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const STAGES=[["brief","Brief"],["concept","Concept"],["dd","Design dev."],["tender","Tender"],["cons","Construction"],["handover","Handover"]];
+const KINDS=[["repo","Repo skills"],["skill","Claude skills"],["connector","Connectors"]];
+const GROUPS=[
+ ["G","General & documents","Set up, split, issue and control the document set"],
+ ["A","Design & briefing","Programme, site, BIM and visual identity"],
+ ["R","Review & compliance","Coordination review, codes, drawing QA and RFIs"],
+ ["S","Specifications & schedules","Specs, schedules and submittal registers"],
+ ["P","Procurement & contracts","Bids, evaluation and subcontracts"],
+ ["M","Management & reporting","Meetings, programmes, reports and office files"],
+ ["C1","BIM, 3D & product data","Connectors · models, viewers and manufacturer catalogues"],
+ ["C2","Visual, diagrams & boards","Connectors · presentation, mark-up and whiteboards"],
+ ["C3","Files & CDE","Connectors · where drawings and packages live"],
+ ["C4","Coordination & tasks","Connectors · trackers, wikis and team chat"],
+ ["C5","Meetings & mail","Connectors · transcripts, calendar and email"],
+ ["C6","Contracts & legal","Connectors · signatures and legislation"]
+];
+const ALL=["brief","concept","dd","tender","cons","handover"];
+const D=[
+// ---------- Repo skills (this repository) ----------
+{id:"project-setup",g:"G",k:"repo",name:"Project setup",st:["dd","tender","cons"],
+ sum:"Inventories a project folder, classifies drawings, specs, schedules and registers, and writes construction context into CLAUDE.md.",
+ does:["Walks the folder and classifies every document type","Detects whether AgentCM structured data (.construction/) is present","Appends project context so every later skill starts informed"],
+ in:"Project directory",out:"Updated CLAUDE.md and .construction/ context",cmd:"/project-setup [project-directory]",slash:true,feeds:["sheet-splitter","spec-splitter"]},
+{id:"sheet-splitter",g:"G",k:"repo",name:"Sheet splitter",st:["dd","tender","cons"],
+ sum:"Splits a bound drawing-set PDF into one PDF per sheet, named from the title block.",
+ does:["Reads sheet numbers from title blocks by vision","Renames each sheet file to its sheet number","Run after project setup"],
+ in:"Bound drawing set PDF",out:"Individual sheet PDFs",cmd:"/sheet-splitter <drawing_set.pdf> [--output-dir <path>]",slash:true,after:["project-setup"],feeds:["schedule-extractor","tag-audit-and-takeoff","viewport-highlighter"]},
+{id:"spec-splitter",g:"S",k:"repo",name:"Spec splitter",st:["dd","tender","cons"],
+ sum:"Splits a bound project manual into individual specification section PDFs and extracts searchable text.",
+ does:["Breaks the manual into sections by CSI number","Extracts text for search and downstream parsing","Prerequisite for the submittal log"],
+ in:"Project manual PDF",out:"Section PDFs + extracted text",cmd:"/spec-splitter <project_manual.pdf> [--output-dir <path>]",slash:true,after:["project-setup"],feeds:["submittal-log-generator"]},
+{id:"schedule-extractor",g:"S",k:"repo",name:"Schedule extractor",st:["dd","tender","cons","handover"],
+ sum:"Pulls door, window, finish, fixture and panel schedules off drawing sheets into Excel.",
+ does:["Locates the schedule on the sheet and crops it at high resolution","Reads the table by vision","Exports a structured spreadsheet"],
+ in:"Sheet number, optional schedule type",out:"Excel schedule",cmd:"/schedule-extractor <sheet_number> [schedule_type]",slash:true,after:["sheet-splitter"]},
+{id:"submittal-log-generator",g:"S",k:"repo",name:"Submittal log generator",st:["tender","cons"],
+ sum:"Reads every spec section and builds a full submittal register in Excel.",
+ does:["Extracts submittal requirements section by section","Scores confidence for each item","Exports a register with a fixed schema"],
+ in:"Spec splitter output; range: all, div_08, div_09…",out:"Submittal register (Excel)",cmd:"/submittal-log-generator [all|div_08|div_09]",slash:true,after:["spec-splitter"]},
+{id:"tag-audit-and-takeoff",g:"R",k:"repo",name:"Tag audit & takeoff",st:["dd","tender","cons"],
+ sum:"Counts tagged items across drawings and checks tag completeness, with sheet mark-up and an Excel quantity takeoff.",
+ does:["Reconciles vision detections against OCR","Marks up sheets to show what was counted","Flags missing or orphan tags"],
+ in:"Drawing sheets, element types to count",out:"Marked-up sheets + QTO spreadsheet",cmd:"/tag-audit-and-takeoff",slash:true,after:["sheet-splitter"]},
+{id:"viewport-highlighter",g:"R",k:"repo",name:"Viewport highlighter",st:["dd","cons"],
+ sum:"Finds each view on a drawing sheet with its title, scale and type, and writes the overlays to AgentCM.",
+ does:["Detects view boundaries and titles","Reads the scale and classifies the view type","Writes overlays through the AgentCM API"],
+ in:"Sheets in an AgentCM project",out:"Viewport overlays in AgentCM",cmd:"Highlight the viewports on A-201",req:"Requires AgentCM (.construction/)",after:["sheet-splitter"]},
+{id:"pe-review",g:"R",k:"repo",name:"PE review",st:["dd","tender","cons"],
+ sum:"Reviews drawings, specs, submittals and RFIs with a project engineer's judgement: coordination, scope gaps and what is missing.",
+ does:["Researches RFIs across drawings and specs","Checks submittals against specified requirements","Surfaces coordination conflicts and scope gaps into the issue registry"],
+ in:"Question, sheet, spec section or submittal",out:"Findings with sheet and clause references",cmd:"Review the coordination between A-501 and S-301 at the stair core",feeds:["rfi-drafter"]},
+{id:"code-researcher",g:"R",k:"repo",name:"Code researcher",st:["concept","dd","tender"],
+ sum:"Scope-specific code gap analysis: which codes the documents cite, which should apply, and the difference.",
+ does:["Extracts the codes referenced in project documents","Researches what should apply for the scope","Writes a versioned gap report"],
+ in:"Scope or question",out:"Code gap report",cmd:"What codes apply to egress from the kitchen complex?",feeds:["rfi-drafter"]},
+{id:"rfi-drafter",g:"R",k:"repo",name:"RFI drafter",st:["tender","cons"],
+ sum:"Turns issues found by other skills into formal RFIs and manages the running issue queue.",
+ does:["Reviews the ambient issue registry","Escalates chosen issues to RFIs in a rigid format","Fills your firm's .docx RFI template, or a generic one"],
+ in:"Issue queue or a described conflict",out:"RFI (.docx / PDF)",cmd:"Review the issue queue and draft RFIs for the open drawing conflicts",after:["pe-review","code-researcher"]},
+{id:"bid-tabulator",g:"P",k:"repo",name:"Bid tabulator",st:["tender"],
+ sum:"Extracts subcontractor bid PDFs into a side-by-side comparison spreadsheet.",
+ does:["Reads each bid's price, inclusions and exclusions","Normalises into per-bidder JSON","Builds the comparison workbook"],
+ in:"Folder of bid PDFs",out:"Bid tab (Excel) + JSON",cmd:"/bid-tabulator <bid_folder_or_files>",slash:true,feeds:["bid-evaluator"]},
+{id:"bid-evaluator",g:"P",k:"repo",name:"Bid evaluator",st:["tender"],
+ sum:"Scores tabulated bids against specs and drawings: scope gaps, exclusion risk and an award recommendation.",
+ does:["Checks each bid's scope against the documents","Scores exclusion risk","Recommends the lowest responsible bidder"],
+ in:"Tabulated bids folder, scope description",out:"Evaluation workbook",cmd:"/bid-evaluator <tabulated_bids_dir> [scope_description]",slash:true,after:["bid-tabulator"],feeds:["subcontract-writer"]},
+{id:"subcontract-writer",g:"P",k:"repo",name:"Subcontract writer",st:["tender","cons"],
+ sum:"Drafts a complete subcontract from your firm's template, the awarded bid and the project specs.",
+ does:["Reads the template's article structure","Validates scope against bid and specs before writing","Outputs a Word document in the template's format"],
+ in:"Firm template, awarded bid, specs",out:"Subcontract (.docx)",cmd:"/subcontract-writer <scope_of_work>",slash:true,req:"Requires an awarded bid",after:["bid-evaluator"]},
+
+// ---------- Claude skills (account library) ----------
+{id:"new-project",g:"G",k:"skill",name:"New project",st:["brief"],
+ sum:"Stands up a new job's folder tree, your templates and a memory file in one move.",
+ does:["Creates the folder structure","Copies in project templates","Starts a project memory file"],
+ in:"Project name, parent folder",out:"Ready-to-work project folder",cmd:"Set up a new project called Kai Tak Pavilion in this folder"},
+{id:"pre-issue-package-qa",g:"G",k:"skill",name:"Pre-issue package QA",st:["dd","tender","cons","handover"],
+ sum:"Checks an outgoing package before it goes to the CDE or Aconex: hygiene, document numbers, revisions and register consistency.",
+ does:["Checks file naming and document numbers","Cross-checks revisions against the register","Flags anything not ready to issue"],
+ in:"Outgoing package + drawing register",out:"QA report with issues to fix",cmd:"QA this package before it goes to Aconex",feeds:["box","m365"]},
+{id:"coordinated-doc-revision",g:"G",k:"skill",name:"Coordinated doc revision",st:["concept","dd","tender","cons"],
+ sum:"Takes a controlled document through review and reissue and keeps every dependent file in step (ISO 19650 P/C revisions).",
+ does:["Applies reviewer comments or resolved decisions","Ripples the change to change logs, specs and handoffs","Re-cuts the full coordinated package"],
+ in:"Master document, comments or decision log",out:"Revised document and updated dependents",cmd:"Incorporate these comments and reissue the protocol as P03",feeds:["pre-issue-package-qa"]},
+{id:"workplace-programmer",g:"A",k:"skill",name:"Workplace programmer",st:["brief","concept"],
+ sum:"Builds an office space programme through guided workplace strategy: area splits, room schedule and seat counts.",
+ does:["Guides workplace strategy choices","Splits area by function","Produces a room schedule and planned seats"],
+ in:"Headcount, area, work style",out:"Space programme",cmd:"Programme a 2,400 m² office for 180 staff with hybrid working",note:"For planning, not code occupant-load calculations."},
+{id:"environmental-analysis",g:"A",k:"skill",name:"Environmental analysis",st:["brief","concept"],
+ sum:"Researches climate, sun, flood, seismic, soil, contamination and topography for a site.",
+ does:["Compiles site hazard and climate data","Summarises constraints for design","Answers location-specific hazard questions"],
+ in:"Site address or coordinates",out:"Site environmental summary",cmd:"Run an environmental analysis for a site in Tseung Kwan O"},
+{id:"revit-mcp",g:"A",k:"skill",name:"Revit (Tech Preview)",st:["concept","dd","cons"],
+ sum:"Reads and edits a Revit model by conversation and runs repetitive schedule work.",
+ does:["Reads model elements and parameters","Creates and edits elements","Runs schedule tasks"],
+ in:"Open Revit model",out:"Model edits, schedules",cmd:"Open Revit and list all doors missing a fire rating",req:"Early preview: work on a detached copy"},
+{id:"10-design",g:"A",k:"skill",name:"30X40 sheet system",st:ALL,
+ sum:"The 10 Design brand: an architectural drawing-sheet look for workbooks, decks, documents, posters and templates.",
+ does:["Supplies colours, type, fonts and UI components","Keeps deliverables on-brand","Works for prototypes and production"],
+ in:"Any deliverable to brand",out:"Branded output",cmd:"Use the 30X40 design system for this stage report"},
+{id:"canvas-design",g:"A",k:"skill",name:"Canvas design",st:["concept","handover"],
+ sum:"Creates posters and static visual pieces as PNG or PDF.",
+ does:["Develops a visual concept","Renders to PNG or PDF"],
+ in:"Brief for the piece",out:"PNG / PDF",cmd:"Make an A1 exhibition poster for the competition entry"},
+{id:"spec-writer",g:"S",k:"skill",name:"Spec writer",st:["dd","tender"],
+ sum:"Turns a material or product list into CSI MasterFormat outline specs with three-part sections and review flags.",
+ does:["Structures Part 1 General, Part 2 Products, Part 3 Execution","Flags items needing review"],
+ in:"Material / product list",out:"Outline specification sections",cmd:"Write outline specs for these façade materials",feeds:["spec-splitter"]},
+{id:"code-researcher-skill",g:"R",k:"skill",name:"Code researcher (library copy)",st:["concept","dd","tender"],
+ sum:"The same code gap analysis as the repo skill, available from your skill library without installing the repository.",
+ does:["Extracts cited codes","Researches what should apply","Reports the gap"],
+ in:"Scope or question",out:"Code gap report",cmd:"What ADA requirements apply to the accessible toilets?",see:"code-researcher"},
+{id:"meeting-minutes",g:"M",k:"skill",name:"Meeting minutes",st:ALL,
+ sum:"Turns a transcript or notes into source-linked minutes: attendance, decisions, actions and open questions.",
+ does:["Writes meetings/YYYY-MM-DD-slug.md","Separates decisions, actions and questions","Never edits project decisions or tasks until you promote items"],
+ in:"Transcript or notes",out:"Minutes file",cmd:"Write minutes from today's design team meeting transcript",after:["fireflies","otter","zoom"]},
+{id:"timeline-creator",g:"M",k:"skill",name:"Timeline creator",st:ALL,
+ sum:"Builds HTML timelines and roadmaps with Gantt bars, milestones and phase groupings.",
+ does:["Lays out phases and milestones","Shows progress"],
+ in:"Stages, dates, milestones",out:"HTML timeline",cmd:"Make a design programme from Stage 2 to tender with key submissions"},
+{id:"internal-comms",g:"M",k:"skill",name:"Internal comms",st:ALL,
+ sum:"Writes status reports, leadership updates, project updates and FAQs in the formats the firm uses.",
+ does:["Drafts to house format","Covers status, incidents and newsletters"],
+ in:"Notes, status",out:"Draft update",cmd:"Draft this week's project status update for the director"},
+{id:"docs",g:"M",k:"skill",name:"Living docs",st:ALL,
+ sum:"Creates shared documents people comment on and edit with Claude: briefs, memos, design reports.",
+ does:["Creates the document and fills it section by section","Handles comments and tabs with tables or charts"],
+ in:"What the document is for",out:"Shared living doc",cmd:"Start a doc for the Stage 3 design brief"},
+{id:"office-files",g:"M",k:"skill",name:"Office files (docx · xlsx · pptx · pdf)",st:ALL,
+ sum:"Four skills for Word, Excel, PowerPoint and PDF files: read, create, edit, merge and fill.",
+ does:["Word: templates, tracked changes","Excel: registers, trackers, formulas","PowerPoint: decks and templates","PDF: merge, split, OCR, forms"],
+ in:"File or content",out:".docx / .xlsx / .pptx / .pdf",cmd:"Merge these consultant PDFs into one submission set"},
+
+// ---------- Connectors ----------
+{id:"sketchup",g:"C1",k:"connector",name:"Trimble SketchUp",st:["concept","dd"],
+ sum:"Builds and saves SketchUp models from a description.",
+ does:["Builds massing and models","Saves the model","Ships its own modelling skills"],
+ in:"Description of the geometry",out:"SketchUp model",cmd:"Build a SketchUp massing of a 12-storey tower on a 30 × 40 m podium"},
+{id:"autodesk-help",g:"C1",k:"connector",name:"Autodesk Product Help",st:ALL,
+ sum:"Searches official help content for Autodesk products such as Revit and AutoCAD.",
+ does:["Lists supported products","Searches help articles"],
+ in:"How-to question",out:"Answer with help sources",cmd:"How do I set up a shared coordinates system in Revit?"},
+{id:"threejs",g:"C1",k:"connector",name:"Three.js 3D viewer",st:["concept","dd"],
+ sum:"Shows an interactive 3D scene in the conversation.",
+ does:["Renders a 3D scene you can orbit"],
+ in:"Scene description",out:"Interactive 3D view",cmd:"Show a 3D view of the stepped podium massing"},
+{id:"repspec",g:"C1",k:"connector",name:"RepSpec",st:["dd","tender"],
+ sum:"Specifies architectural lighting and electrical from real manufacturer catalogues (~355 makers), with a bill of materials.",
+ does:["Specs fixtures and controls for a described space","Searches and cross-references products","Can scope to one manufacturer"],
+ in:"Space description",out:"Fixture spec + BOM",cmd:"Spec lighting for a 60-seat lecture theatre",note:"Uses credits. Outputs are preliminary; a licensed professional must review."},
+{id:"figma",g:"C2",k:"connector",name:"Figma",st:["concept","dd","handover"],
+ sum:"Reads and writes Figma and FigJam: designs, diagrams and design-system work.",
+ does:["Reads designs and screenshots","Creates designs and FigJam diagrams"],
+ in:"Figma link or brief",out:"Figma / FigJam content",cmd:"Make a FigJam map of the Stage 3 information flow"},
+{id:"miro",g:"C2",k:"connector",name:"Miro",st:["brief","concept","dd"],
+ sum:"Reads and builds Miro boards, tables and comments for workshops and pin-ups.",
+ does:["Creates boards and sections","Reads board content","Adds tables and comments"],
+ in:"Board link or workshop brief",out:"Miro board",cmd:"Set up a Miro board for the client briefing workshop"},
+{id:"canva",g:"C2",k:"connector",name:"Canva",st:["concept","handover"],
+ sum:"Generates, edits and exports Canva designs from brand templates.",
+ does:["Creates designs from brand templates","Exports and resizes"],
+ in:"Brief or template",out:"Canva design",cmd:"Create a project board from our brand template"},
+{id:"adobe",g:"C2",k:"connector",name:"Adobe for creativity",st:["concept","handover"],
+ sum:"Adobe Express designs, image editing, fonts, InDesign export and Acrobat PDF tools.",
+ does:["Designs posters, decks and boards","Edits images","Combines, compresses and redacts PDFs"],
+ in:"Brief, images or PDFs",out:"Express design / edited files",cmd:"Combine these PDFs and compress for email"},
+{id:"lucid",g:"C2",k:"connector",name:"Lucid",st:["brief","concept","dd"],
+ sum:"Creates Lucid diagrams: flowcharts, org charts, mind maps and sequence diagrams.",
+ does:["Builds diagrams from a spec or Mermaid","Shares documents"],
+ in:"Process or structure",out:"Lucid diagram",cmd:"Draw the project org chart with consultants and contractor"},
+{id:"drawio",g:"C2",k:"connector",name:"draw.io",st:ALL,
+ sum:"Creates draw.io diagrams with searchable shape libraries.",
+ does:["Creates diagrams","Finds shapes"],
+ in:"Diagram description",out:"draw.io diagram",cmd:"Diagram the submission and approval route"},
+{id:"tldraw",g:"C2",k:"connector",name:"tldraw",st:["brief","concept"],
+ sum:"Sketches on a live tldraw canvas.",
+ does:["Draws shapes and arrows on a whiteboard"],
+ in:"Sketch description",out:"Canvas sketch",cmd:"Sketch a bubble diagram of the ground floor adjacencies"},
+{id:"mermaid",g:"C2",k:"connector",name:"Mermaid Chart",st:ALL,
+ sum:"Validates and renders Mermaid diagrams.",
+ does:["Checks Mermaid syntax","Renders the diagram"],
+ in:"Mermaid text",out:"Rendered diagram",cmd:"Render the RFI workflow as a Mermaid flowchart"},
+{id:"box",g:"C3",k:"connector",name:"Box",st:ALL,
+ sum:"Searches, reads, uploads and comments on files in Box.",
+ does:["Keyword and metadata search","Folder listings and uploads","File comments and tasks"],
+ in:"Search or folder",out:"Files and comments",cmd:"Find the latest fire strategy report in the project Box folder"},
+{id:"dropbox",g:"C3",k:"connector",name:"Dropbox",st:ALL,
+ sum:"Browses, searches, shares and organises Dropbox files; creates file requests.",
+ does:["Search and preview","Create share links","File requests"],
+ in:"Search or folder",out:"Files and links",cmd:"Create a file request for the structural engineer's calcs"},
+{id:"gdrive",g:"C3",k:"connector",name:"Google Drive",st:ALL,
+ sum:"Searches, reads, creates and shares Drive files.",
+ does:["Search and read","Create and update","Share"],
+ in:"Search or file",out:"Drive files",cmd:"Find last month's cost plan in Drive"},
+{id:"m365",g:"C3",k:"connector",name:"Microsoft 365",st:ALL,
+ sum:"SharePoint files, Outlook mail and calendar, and Teams chats and channels.",
+ does:["Search and upload to SharePoint","Draft and send Outlook mail","Post to Teams channels"],
+ in:"Site, mailbox or channel",out:"Files, mail, messages",cmd:"Upload the issued package to the SharePoint issue folder"},
+{id:"jira",g:"C4",k:"connector",name:"Atlassian (Jira · Confluence)",st:ALL,
+ sum:"Creates and updates Jira issues and Confluence pages.",
+ does:["Create, edit and transition issues","Search with JQL / CQL","Create and update pages"],
+ in:"Project or space",out:"Issues and pages",cmd:"Log each open design query as a Jira issue"},
+{id:"notion",g:"C4",k:"connector",name:"Notion",st:ALL,
+ sum:"Searches and writes Notion pages and databases.",
+ does:["Create pages and databases","Query data sources"],
+ in:"Workspace or page",out:"Pages and records",cmd:"Add these decisions to the project decision log in Notion"},
+{id:"slack",g:"C4",k:"connector",name:"Slack",st:ALL,
+ sum:"Reads and posts Slack messages, canvases and lists.",
+ does:["Search channels","Send and schedule messages","Update canvases and lists"],
+ in:"Channel",out:"Messages",cmd:"Summarise this week's #design-team thread"},
+{id:"linear",g:"C4",k:"connector",name:"Linear",st:ALL,auth:true,
+ sum:"Issue and project tracking in Linear.",
+ does:["Available once signed in"],
+ in:"—",out:"—",cmd:"Sign in via Settings → Connectors first"},
+{id:"decisions",g:"C4",k:"connector",name:"Decisions",st:ALL,auth:true,
+ sum:"Decisions connector.",
+ does:["Available once signed in"],
+ in:"—",out:"—",cmd:"Sign in via Settings → Connectors first"},
+{id:"fireflies",g:"C5",k:"connector",name:"Fireflies",st:ALL,
+ sum:"Meeting transcripts, summaries and search.",does:["Fetch transcripts and summaries","Search across meetings"],
+ in:"Meeting",out:"Transcript / summary",cmd:"Get the transcript of Tuesday's consultant coordination meeting",feeds:["meeting-minutes"]},
+{id:"otter",g:"C5",k:"connector",name:"Otter.ai",st:ALL,
+ sum:"Retrieves meeting transcripts from Otter.",does:["Search and fetch transcripts"],
+ in:"Meeting",out:"Transcript",cmd:"Find the Otter transcript of the client review",feeds:["meeting-minutes"]},
+{id:"zoom",g:"C5",k:"connector",name:"Zoom",st:ALL,
+ sum:"Zoom meetings, recordings and notes.",does:["Create and update meetings","Get recordings and meeting assets"],
+ in:"Meeting",out:"Recording / notes",cmd:"Schedule a Zoom design review for Thursday 3pm",feeds:["meeting-minutes"]},
+{id:"calendar",g:"C5",k:"connector",name:"Google Calendar",st:ALL,
+ sum:"Lists, creates and updates events; suggests meeting times.",does:["Find free time","Create events"],
+ in:"Attendees, window",out:"Events",cmd:"Find a slot next week for the façade workshop"},
+{id:"gmail",g:"C5",k:"connector",name:"Gmail",st:ALL,
+ sum:"Searches threads and drafts or sends mail.",does:["Search threads","Draft and reply"],
+ in:"Thread or recipients",out:"Drafts",cmd:"Draft a cover email for the Stage 3 submission"},
+{id:"docusign",g:"C6",k:"connector",name:"Docusign",st:["tender","cons"],
+ sum:"Creates envelopes, tracks signatures and reads agreements.",does:["Send for signature","Track envelopes","Send reminders"],
+ in:"Document, signers",out:"Envelope",cmd:"Send the consultant appointment for signature",after:["subcontract-writer"]},
+{id:"legal",g:"C6",k:"connector",name:"Legal Data Hunter",st:["brief","concept","dd"],
+ sum:"Searches statutes and case law across 230+ jurisdictions with citations.",does:["Search legislation","Resolve references"],
+ in:"Legal question",out:"Cited research (not legal advice)",cmd:"Find the Hong Kong Buildings Ordinance provisions on means of escape"}
+];
+// Chains
+const FLOWS=[
+ {t:"Drawing intake",p:"From a bound set to schedules, counts and views.",c:[["project-setup"],["sheet-splitter"],["schedule-extractor","tag-audit-and-takeoff","viewport-highlighter"]]},
+ {t:"Specification to register",p:"Outline specs through to a submittal log.",c:[["spec-writer"],["spec-splitter"],["submittal-log-generator"]]},
+ {t:"Review to RFI",p:"Findings collect in the issue queue, then escalate.",c:[["pe-review","code-researcher"],["rfi-drafter"]]},
+ {t:"Tender to contract",p:"Bids in, recommendation, contract out for signature.",c:[["bid-tabulator"],["bid-evaluator"],["subcontract-writer"],["docusign"]]},
+ {t:"Revise and issue",p:"Controlled reissue, QA, then to the CDE.",c:[["coordinated-doc-revision"],["pre-issue-package-qa"],["m365","box"]]},
+ {t:"Meeting record",p:"Transcript to minutes to tracked actions.",c:[["fireflies","zoom"],["meeting-minutes"],["jira","notion"]]}
+];
+
+const byId=Object.fromEntries(D.map(d=>[d.id,d]));
+const gIdx=Object.fromEntries(GROUPS.map((g,i)=>[g[0],i]));
+D.forEach(d=>{const n=D.filter(x=>x.g===d.g);d.code=d.g+"-"+String(n.indexOf(d)+1).padStart(2,"0")});
+const state={q:"",kind:new Set(),stage:new Set(),sel:null};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const KL={repo:"Repo skill",skill:"Claude skill",connector:"Connector"};
+
+$("#c-all").textContent=D.length;
+$("#c-skills").textContent=D.filter(d=>d.k!=="connector").length;
+$("#c-conn").textContent=D.filter(d=>d.k==="connector").length;
+$("#c-repo").textContent=D.filter(d=>d.k==="repo").length;
+$("#c-cs").textContent=D.filter(d=>d.k==="skill").length;
+$("#c-cn").textContent=D.filter(d=>d.k==="connector").length;
+
+function chips(el,list,set,count){
+  el.innerHTML=list.map(([k,l])=>`<button class="chip" type="button" data-v="${k}" aria-pressed="${set.has(k)}">${esc(l)}<span class="n">${count(k)}</span></button>`).join("");
+  el.onclick=e=>{const b=e.target.closest(".chip");if(!b)return;const v=b.dataset.v;set.has(v)?set.delete(v):set.add(v);render()};
+}
+function match(d){
+  if(state.kind.size&&!state.kind.has(d.k))return false;
+  if(state.stage.size&&!d.st.some(s=>state.stage.has(s)))return false;
+  if(state.q){const hay=[d.name,d.sum,d.cmd,d.in,d.out,d.code,KL[d.k],(d.does||[]).join(" "),GROUPS[gIdx[d.g]][1]].join(" ").toLowerCase();
+    return state.q.split(/\s+/).every(w=>hay.includes(w))}
+  return true;
+}
+function stageBar(d){return `<span class="stages" aria-label="Stages: ${d.st.map(s=>STAGES.find(x=>x[0]===s)[1]).join(", ")}">${STAGES.map(([k])=>`<i class="st${d.st.includes(k)?" on":""}"></i>`).join("")}</span>`}
+function render(){
+  chips($("#f-kind"),KINDS,state.kind,k=>D.filter(d=>d.k===k).length);
+  chips($("#f-stage"),STAGES,state.stage,k=>D.filter(d=>d.st.includes(k)).length);
+  const vis=D.filter(match);
+  $("#shown").textContent=`${vis.length} of ${D.length} shown`;
+  const html=GROUPS.map(([g,t,s])=>{const items=vis.filter(d=>d.g===g);if(!items.length)return"";
+    return `<div class="group"><div class="group-h"><span class="gcode">${g}</span><h3>${esc(t)}</h3><span class="gsub">${esc(s)}</span></div><div class="cards">${items.map(card).join("")}</div></div>`}).join("");
+  $("#list").innerHTML=html||`<div class="empty">Nothing matches. Clear a filter or try a broader word, such as “schedule” or “review”.</div>`;
+}
+function card(d){
+  const flag=d.auth?`<span class="flag auth">Needs sign-in</span>`:d.req?`<span class="flag req">Prereq</span>`:`<span class="kind" data-k="${d.k}">${KL[d.k]}</span>`;
+  return `<button type="button" class="card" data-kind="${d.k}" data-id="${d.id}" aria-current="${state.sel===d.id}"><div class="card-top"><span class="code">${d.code}</span>${flag}</div><h4>${esc(d.name)}</h4><p>${esc(d.sum)}</p>${stageBar(d)}</button>`;
+}
+function nodeBtn(id){const d=byId[id];return `<button type="button" class="node" data-kind="${d.k}" data-id="${id}">${esc(d.slash?"/"+id:d.name)}</button>`}
+function renderFlows(){
+  $("#flows").innerHTML=FLOWS.map(f=>`<div class="flow"><h3>${esc(f.t)}</h3><p>${esc(f.p)}</p><div class="chain">${f.c.map(step=>step.map(nodeBtn).join('<span class="or">or</span>')).join('<span class="arr">→</span>')}</div></div>`).join("");
+}
+function linkRow(ids){return `<div class="links">${ids.map(nodeBtn).join("")}</div>`}
+function showDetail(id,scroll){
+  const d=byId[id];if(!d)return;state.sel=id;
+  document.querySelectorAll(".card").forEach(c=>c.setAttribute("aria-current",c.dataset.id===id));
+  const how=d.slash?"Type in Claude Code":d.k==="repo"?"Say in Claude Code":d.auth?"Status":"Ask Claude";
+  const g=GROUPS[gIdx[d.g]];
+  $("#detail").hidden=false;
+  $("#detail").innerHTML=`
+   <div class="d-head"><button class="close" type="button" id="closeD">Close</button>
+     <div class="eyebrow">${d.code} · ${esc(g[1])}</div>
+     <h2>${esc(d.name)}</h2><p>${esc(d.sum)}</p></div>
+   <div class="d-sec"><h5>${how}</h5><div class="cmd"><code id="cmdtxt">${esc(d.cmd)}</code>${d.auth?"":`<button type="button" id="copy">Copy</button>`}</div>
+     ${d.slash?`<p style="margin:6px 0 0;font-size:12px;color:var(--ink-3)">Slash command only: this skill does not start from plain language.</p>`:d.k==="repo"?`<p style="margin:6px 0 0;font-size:12px;color:var(--ink-3)">Starts from plain language; <span class="mono">/${d.id}</span> also works.</p>`:""}</div>
+   <div class="d-sec"><h5>What it does</h5><ul>${d.does.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>
+   <div class="d-sec"><h5>Inputs & outputs</h5><dl class="kv"><dt>Type</dt><dd>${KL[d.k]}</dd><dt>Needs</dt><dd>${esc(d.in)}</dd><dt>Produces</dt><dd>${esc(d.out)}</dd>${d.req?`<dt>Prereq</dt><dd style="color:var(--red)">${esc(d.req)}</dd>`:""}${d.note?`<dt>Note</dt><dd>${esc(d.note)}</dd>`:""}</dl></div>
+   <div class="d-sec"><h5>Project stages</h5><div class="stagebar">${STAGES.map(([k,l])=>`<span class="${d.st.includes(k)?"on":""}">${l}</span>`).join("")}</div></div>
+   ${d.after?`<div class="d-sec"><h5>Run after</h5>${linkRow(d.after)}</div>`:""}
+   ${d.feeds?`<div class="d-sec"><h5>Feeds into</h5>${linkRow(d.feeds)}</div>`:""}
+   ${d.see?`<div class="d-sec"><h5>See also</h5>${linkRow([d.see])}</div>`:""}`;
+  const cb=$("#copy");
+  if(cb)cb.onclick=()=>{const t=d.cmd;const done=()=>toast("Copied");
+    try{navigator.clipboard.writeText(t).then(done,()=>{selectText();toast("Press Ctrl+C to copy")})}catch(e){selectText();toast("Press Ctrl+C to copy")}};
+  $("#closeD").onclick=()=>{if(matchMedia("(max-width:980px)").matches)$("#detail").hidden=true};
+  try{history.replaceState(null,"","#"+id)}catch(e){}
+  if(scroll&&!matchMedia("(max-width:980px)").matches){const c=document.querySelector(`.card[data-id="${id}"]`);c&&c.scrollIntoView({block:"nearest",behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"})}
+}
+function selectText(){const r=document.createRange();r.selectNodeContents($("#cmdtxt"));const s=getSelection();s.removeAllRanges();s.addRange(r)}
+let tt;function toast(m){const t=$("#toast");t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(()=>t.hidden=true,1600)}
+
+document.addEventListener("click",e=>{const b=e.target.closest("[data-id]");if(b)showDetail(b.dataset.id,b.classList.contains("node"))});
+$("#q").addEventListener("input",e=>{state.q=e.target.value.trim().toLowerCase();render()});
+document.addEventListener("keydown",e=>{if(e.key==="/"&&document.activeElement!==$("#q")){e.preventDefault();$("#q").focus()}
+  if(e.key==="Escape"&&matchMedia("(max-width:980px)").matches)$("#detail").hidden=true});
+
+renderFlows();render();
+const start=(location.hash||"").slice(1);
+if(matchMedia("(max-width:980px)").matches&&!byId[start]){showDetail("project-setup");$("#detail").hidden=true}
+else showDetail(byId[start]?start:"pe-review");
+</script>
